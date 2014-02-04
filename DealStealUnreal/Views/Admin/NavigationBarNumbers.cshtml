@@ -1,0 +1,100 @@
+﻿@{
+    Layout = null;
+}
+
+@model DealStealUnreal.Models.NavigationBarModels  
+@{
+    int countPage = (int) Math.Ceiling(Convert.ToDouble(Model.totalGifts / Model.pagesize));
+    
+    int  temp, begin, end;
+    int numberPage = Model.page;
+    
+    if (countPage > 12)
+    {
+
+        if ((numberPage - 5) > 0)
+        {
+            temp = countPage - (numberPage + 3);
+            begin = (temp >= 0) ? numberPage - 3 : numberPage - 3 + temp;
+        }
+        else
+        {
+            begin = 1;
+        }
+
+        if ((countPage - numberPage) < 5)
+        {
+            end = countPage;
+        }
+        else
+        {
+            temp = numberPage - 3;
+            end = (temp > 0) ? temp + 6 : 7;
+        }
+    }
+    else
+    {
+        begin = 1;
+        end = countPage;
+    }
+}
+
+<div id="navigationBarNumbers">
+   
+    @switch (numberPage)
+    {
+        case 1: break;
+            
+        default: 
+        {
+             <a class="prev" href="page/@(numberPage - 1)">Назад</a> 
+        } 
+        break;
+    }
+
+    @switch (begin) {
+        case 1:
+            {
+                for (var i = 1; i < numberPage; i++) 
+                {
+                    <a href="page/@i">@i</a>
+                }
+            } break;
+
+        default:
+            {
+                <a href="/page/1">1</a>
+                <span>...</span>
+
+                for (var i = begin; i < numberPage; i++) 
+                {
+                    <a href="page/@i">@i</a>
+                }
+            }
+            break;
+    }
+
+    <span class="active"> @numberPage </span>
+
+       @if (end == countPage) 
+        {
+            for (var i = numberPage + 1; i <= countPage; i++)
+            {
+                <a href="page/@i">@i</a>
+            }
+        } 
+        else
+            {
+                for (var i = numberPage + 1; i <= end; i++) 
+                {
+                    <a href="page/@i">@i</a>
+                }
+                <span>...</span>
+                <a href="page/@countPage">@countPage</a>
+            }
+
+    @if (numberPage != countPage)
+    {
+       <a class="next" href="page/@(numberPage + 1)">Далее</a> 
+    }
+	</div>

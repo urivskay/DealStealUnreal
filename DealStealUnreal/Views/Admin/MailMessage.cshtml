@@ -1,0 +1,11 @@
+﻿<div id="div_MailMessage">
+    <script type="text/javascript">
+        tinymce.init({
+            theme: "modern",
+            selector: "#editor"
+        });
+    </script>
+    <p id="mailtext">Create a message that will be sent to users after registration</p>
+    <p id="editor"></p>
+    <input type="button" value="Save" onclick="settings.SaveMessageForMail()" />
+</div>

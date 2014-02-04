@@ -1,0 +1,25 @@
+﻿@{ Layout = null; }
+<ul id="top-menu" class="menu sf-js-enabled sf-shadow">
+<li id="menu-item-384" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-384 current_page_item"> @Html.ActionLink("DEALS", "Index", "Home")</li>
+
+<li id="menu-item-378" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-378"> @Html.ActionLink("MY PROFILE", "ShowProfile", "Account")
+<ul class="sub-menu sf-js-enabled sf-shadow">
+	<li id="menu-item-421" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-421" style="white-space: normal; float: none; width: 100%;"> @Html.ActionLink("Edit", "EditProfile", "Account")</li>
+</ul>
+</li>
+<li id="menu-item-382" class="reward menu-item menu-item-type-post_type menu-item-object-page menu-item-382"> @Html.ActionLink("REWARDS", "OurRewardSystem", "Home")</li> 
+<li id="menu-item-381" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-381"> @Html.ActionLink("HOW IT WORKS", "JoinTheTeam", "Home")</li>
+<li id="menu-item-383" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-383 "> @Html.ActionLink("ABOUT US", "AboutUs", "Home")</li>
+
+
+    @if (!Request.IsAuthenticated) {
+
+<ul class="sub-menu">
+	<li id="menu-item-419" class="Register menu-item menu-item-type-post_type menu-item-object-page menu-item-419"> @Html.ActionLink("REGISTER", "Register", "Account")</li>
+	<li id="menu-item-420" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-420"> @Html.ActionLink("RECOVER PASSWORD", "RecoverPassword", "Account")</li>
+</ul>
+
+    }
+
+</li>
+</ul>

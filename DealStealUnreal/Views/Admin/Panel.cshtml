@@ -1,0 +1,29 @@
+﻿@{
+    Layout = null;
+}
+<script type="text/javascript" src="@Url.Content("~/Scripts/tinymce/tinymce.min.js")"></script>
+<script type="text/javascript" src="@Url.Content("~/Scripts/Admin/Settings.js")"></script>
+
+<div id="admin-panel">
+    <ul id="menu">
+	<li>
+		<a href="#">Global Settings</a>
+		<ul>
+			<li> @Html.ActionLink("Text Mail","MailMessage","Settings")</li>
+		</ul>
+	</li>
+	<li>
+		<a href="#">Deals</a>
+	</li>
+	<li>
+		@Html.ActionLink("Gifts","Index","Gifts")
+		<ul>
+			<li><a href="#">Add Gift</a></li>
+		</ul>
+	</li>
+    <li>
+		<a href="#">Users</a>
+	</li>
+</ul>
+</div>
+

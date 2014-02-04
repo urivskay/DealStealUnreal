@@ -1,0 +1,44 @@
+﻿
+@{
+    Layout = null;
+}
+
+@model DealStealUnreal.Controllers.Admin.GiftsController.Model  
+   
+@{
+ DealStealUnreal.Models.NavigationBarModels navigation = new DealStealUnreal.Models.NavigationBarModels();
+ navigation.page = Model.page;
+ navigation.pagesize = Model.pagesize;
+ navigation.totalGifts = Model.totalGifts;
+}
+
+ <div id="products">
+     <span class="total">
+        Товаров:
+        <strong>@Model.totalGifts</strong>
+    </span>
+     <table id="table_products">
+        @for (int i = 0; i < Model.gifts.Count(); i++)
+        {
+            <tr>
+                    <td>
+                        <img src="@Model.gifts.ElementAt(i).image" width="200" height="200" />
+                    </td>
+                    <td>
+                        <p>@Model.gifts.ElementAt(i).countDeal</p>
+                    </td>
+                    <td>
+                        <p>@Model.gifts.ElementAt(i).countSteal</p>
+                    </td>
+                    <td>
+                        <p>@Model.gifts.ElementAt(i).countUnreal</p>
+                    </td>
+                    <td>
+                        <p>@Model.gifts.ElementAt(i).description</p>
+                    </td>
+            </tr>
+        }
+    </table>
+
+     @Html.Partial("../Admin/NavigationBarNumbers",@navigation)
+ </div>
